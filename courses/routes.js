@@ -13,7 +13,6 @@ function CourseRoutes(app) {
   app.put("/api/courses/:id", (req, res) => {
     const id = req.params.id;
     const course = req.body;
-    console.log(course);
     Database.courses = Database.courses.map((c) =>
       c._id.$oid === id ? { ...c, ...course } : c
     );
