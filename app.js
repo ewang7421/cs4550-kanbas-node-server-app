@@ -8,21 +8,6 @@ import mongoose from "mongoose";
 import UserRoutes from "./users/routes.js";
 import session from "express-session";
 import "dotenv/config";
-const CONNECTION_STRING =
-  process.env.DB_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas";
-mongoose.connect(CONNECTION_STRING);
-const app = express();
-app.use(
-  cors({
-    credentials: true,
-
-    origin: [
-      process.env.FRONTEND_URL,
-      "https://a5--quiet-haupia-5cdc5f.netlify.app/",
-      "https://a6--quiet-haupia-5cdc5f.netlify.app/"
-    ],
-  })
-);
 const sessionOptions = {
   secret: "any string",
   resave: false,
@@ -35,6 +20,17 @@ if (process.env.NODE_ENV !== "development") {
     secure: true,
   };
 }
+const CONNECTION_STRING =
+  process.env.DB_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas";
+mongoose.connect(CONNECTION_STRING);
+const app = express();
+app.use(
+  cors({
+    credentials: true,
+
+    origin: '*'
+  })
+);
 app.use(session(sessionOptions));
 
 app.use(express.json());
