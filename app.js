@@ -28,7 +28,10 @@ app.use(
   cors({
     credentials: true,
 
-    origin: "https://a6--quiet-haupia-5cdc5f.netlify.app",
+    origin: [
+      "https://a6--quiet-haupia-5cdc5f.netlify.app",
+      "https://a5--quiet-haupia-5cdc5f.netlify.app",
+    ],
   })
 );
 app.use(session(sessionOptions));
