@@ -16,7 +16,11 @@ app.use(
   cors({
     credentials: true,
 
-    origin: process.env.FRONTEND_URL,
+    origin: [
+      process.env.FRONTEND_URL,
+      "https://a5--quiet-haupia-5cdc5f.netlify.app/",
+      "https://a6--quiet-haupia-5cdc5f.netlify.app/"
+    ],
   })
 );
 const sessionOptions = {
